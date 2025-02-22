@@ -1,0 +1,86 @@
+﻿<Window
+    x:Class="Win32PSCalculator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Win32PSCalculator"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Win32PSCalculator"
+    Width="600"
+    Height="400"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Padding="5"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="Gray"
+                            BorderThickness="1"
+                            CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="MinWidth" Value="120" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ItemsControl
+            x:Name="QuantumButtonsPanel"
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="10"
+            HorizontalAlignment="Center">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+        <StackPanel
+            Grid.Row="1"
+            Margin="10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBox
+                x:Name="HexInputTextBox"
+                Width="150"
+                Margin="5"
+                VerticalAlignment="Center"
+                Text="" />
+            <Button
+                x:Name="CheckButton"
+                Width="80"
+                Margin="5"
+                VerticalAlignment="Center"
+                Click="CheckButton_Click"
+                Content="CHECK" />
+        </StackPanel>
+
+        <TextBlock
+            x:Name="HexOutputTextBox"
+            Grid.Row="3"
+            Margin="10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="Enter hex value and click CHECK to calculate real value" />
+    </Grid>
+</Window>
